@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    </head>
+    <style>table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 3px solid rgb(255, 255, 255);
+      }
+      
+      tr:hover {background-color:#f5f5f5;}</style>
+    <h1>BMI Calculator</h1><br><br>
+    <body>
+        <form class="pure-form" action="/" method='POST'>
+            <h3>Weight(Kilograms)
+            <input class="input1" type="text" name="weight"></h3><br><br>
+            <h3>Height(Centimeters)
+            <input class="input2" type="text" name="height"></h3><br><br>
+            <div class="d1"></div><br><br>
+            <button type="submit" class="pure-button " value="submit">Calculate</button>
+        </form><br><br>
+        <p >Body mass index is a value derived from the mass and height of a person. The BMI is defined as the body mass divided by the square of the body height, and is expressed in units of kg/m², resulting from mass in kilograms and height in metres.</p>
+        <p class="p1">--------------------------------------------------------------------------------------------------</p>
+        <div class="d1">
+            <br>
+            {% if bmi %}
+            <table class="t1">
+                <tr>
+                    <td>WEIGHT</td>
+                    <td>{{ weight }}</td>
+                  </tr>
+                  <tr>
+                    <td>HEIGHT</td>
+                    <td>{{ height }}</td>
+                  </tr>
+                  <tr>
+                    <td>BMI</td>
+                    <td>{{ bmi }}</td>
+                  </tr>
+            </table>
+                {% if bmi >= 18 and bmi <=25 %}
+                    <p>You have Normal Weight.</p>
+                {% elif bmi <18 %}
+                    <p>You are Under Weight.</p>
+                {% elif bmi >25 %}
+                    <p>You are Over Weight.</p>
+                {% endif %}
+                <p class="p1">Thank You for visting.</p>
+            {% endif %}
+        </div>
+    </body>
+</html>
